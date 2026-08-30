@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenSprinkler Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/OpenSprinkler-Firmware
+ExecStart=/opt/OpenSprinkler-Firmware/OpenSprinkler
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
