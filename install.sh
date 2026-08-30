@@ -24,7 +24,7 @@ sudo git submodule update --init --recursive
 
 # Kompilieren für Raspberry Pi (OS_PI)
 echo "Kompiliere OpenSprinkler..."
-sudo ./build.sh os_pi
+sudo ./build.sh ospi
 
 echo "=== 3. Systemd Service einrichten ==="
 # Kopiere die Service-Datei aus dem lokalen Git-Repository
