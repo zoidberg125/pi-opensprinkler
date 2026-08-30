@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+# Pfad des Verzeichnisses ermitteln, in dem dieses Skript liegt
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 echo "=== 1. Systempakete & Build-Tools installieren ==="
 sudo apt-get update
 sudo apt-get install -y git build-essential libgpiod-dev ccache
@@ -16,7 +19,7 @@ else
     cd OpenSprinkler-Firmware
 fi
 
-# Submodule initialisieren (für moderne Firmware-Versionen erforderlich)
+# Submodule initialisieren
 sudo git submodule update --init --recursive
 
 # Kompilieren für Raspberry Pi (OS_PI)
@@ -24,7 +27,7 @@ echo "Kompiliere OpenSprinkler..."
 sudo ./build.sh os_pi
 
 echo "=== 3. Systemd Service einrichten ==="
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# Kopiere die Service-Datei aus dem lokalen Git-Repository
 sudo cp "$SCRIPT_DIR/systemd/opensprinkler.service" /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable opensprinkler.service
