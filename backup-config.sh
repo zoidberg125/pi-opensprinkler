@@ -10,16 +10,16 @@ mkdir -p "$CONFIG_DIR"
 
 # Kopiere die Konfigurationsdatei aus OpenSprinkler
 if [ -f "/opt/OpenSprinkler-Firmware/stn.dat" ]; then
-    cp /opt/OpenSprinkler-Firmware/stn.dat "$CONFIG_DIR/stn.dat"
+    cp /opt/OpenSprinkler-Firmware/stns.dat "$CONFIG_DIR/stns.dat"
     echo "Konfiguration stn.dat erfolgreich nach $CONFIG_DIR kopiert."
 else
-    echo "Fehler: /opt/OpenSprinkler-Firmware/stn.dat wurde nicht gefunden!"
+    echo "Fehler: /opt/OpenSprinkler-Firmware/stns.dat wurde nicht gefunden!"
     exit 1
 fi
 
 # Automatisch bei Git committen und pushen
 cd "$REPO_DIR"
-git add config/stn.dat
+git add config/stns.dat
 
 # Nur committen, wenn es tatsächlich Änderungen gab
 if ! git diff-index --quiet HEAD --; then
