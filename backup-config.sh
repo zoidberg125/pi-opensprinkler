@@ -9,9 +9,9 @@ CONFIG_DIR="$REPO_DIR/config"
 mkdir -p "$CONFIG_DIR"
 
 # Kopiere die Konfigurationsdatei aus OpenSprinkler
-if [ -f "/opt/OpenSprinkler-Firmware/stn.dat" ]; then
+if [ -f "/opt/OpenSprinkler-Firmware/stns.dat" ]; then
     cp /opt/OpenSprinkler-Firmware/stns.dat "$CONFIG_DIR/stns.dat"
-    echo "Konfiguration stn.dat erfolgreich nach $CONFIG_DIR kopiert."
+    echo "Konfiguration stns.dat erfolgreich nach $CONFIG_DIR kopiert."
 else
     echo "Fehler: /opt/OpenSprinkler-Firmware/stns.dat wurde nicht gefunden!"
     exit 1
